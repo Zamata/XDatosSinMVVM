@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt") // KAPT para Room
 }
 
 android {
@@ -49,6 +50,8 @@ android {
     }
 }
 
+val room_version = "2.6.1"
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -66,4 +69,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler) // Revisa que 'androidx-room-compiler' esté bien definido en el catalog
 }
